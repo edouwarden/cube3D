@@ -1,0 +1,23 @@
+NO ./maps/textures/Wall_NO.xpm
+
+
+
+        SO              ./maps/textures/Wall_SO.xpm
+WE            ./maps/textures/Wall_WE.xpm
+EA         ./maps/textures/Wall_EA.xpm 
+
+
+  
+
+
+
+
+        F 123,56,0
+C 53,155,155
+
+	        
+   11111 
+   1N  1
+   1   1
+   10001
+   11111
