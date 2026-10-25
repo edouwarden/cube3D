@@ -12,7 +12,7 @@
 
 #include "cube3d.h"
 
-void	my_mlx_pixel_put(t_data *data, int x, int y, int color)
+void	put_pixel(t_data *data, int x, int y, int color)
 {
 	char	*dst;
 
@@ -33,7 +33,7 @@ void	clear_screen(t_data *data)
 		x = 0;
 		while (x < WINDOW_WIDTH)
 		{
-			my_mlx_pixel_put(data, x, y, 0x000000);
+			put_pixel(data, x, y, 0x000000);
 			x++;
 		}
 		y++;

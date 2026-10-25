@@ -11,9 +11,9 @@
 /* ************************************************************************** */
 
 #include "cube3d.h"
-#include "cube_3d_parsing.h"
+#include "cube3d_parsing.h"
 
-int	is_pos_val(t_data *data, float x, float y)
+int	is_position_walkable(t_data *data, float x, float y)
 {
 	int	x1;
 	int	x2;
@@ -45,7 +45,7 @@ void	handle_movement(t_data *data, int *redraw, float move_x, float move_y)
 
 	new_x = data->player.x + move_x;
 	new_y = data->player.y + move_y;
-	if (!BONUS || (BONUS && is_pos_val(data, new_x, new_y)))
+	if (!BONUS || (BONUS && is_position_walkable(data, new_x, new_y)))
 	{
 		data->player.x = new_x;
 		data->player.y = new_y;
@@ -53,12 +53,12 @@ void	handle_movement(t_data *data, int *redraw, float move_x, float move_y)
 	}
 	else
 	{
-		if (fabs(move_x) > 0.001 && is_pos_val(data, new_x, data->player.y))
+		if (fabs(move_x) > 0.001 && is_position_walkable(data, new_x, data->player.y))
 		{
 			data->player.x += move_x;
 			*redraw = 1;
 		}
-		if (fabs(move_y) > 0.001 && is_pos_val(data, data->player.x, new_y))
+		if (fabs(move_y) > 0.001 && is_position_walkable(data, data->player.x, new_y))
 		{
 			data->player.y += move_y;
 			*redraw = 1;

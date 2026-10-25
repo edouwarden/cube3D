@@ -4,24 +4,24 @@ MLX				= 	mlx/libmlx.a
 GNL				=	utils/get_next_line/get_next_line.a
 LIBFT			=	utils/libft/libft.a
 CC 				= 	cc
-SRCS 			= 	src/0_parsing/0_check_map.c \
-					src/0_parsing/color_handling.c \
-					src/0_parsing/line_handling.c \
-					src/0_parsing/flood_fill.c \
-					src/0_parsing/flood_fill_utils.c \
-					src/0_parsing/is_something.c \
-					src/0_parsing/2_get_info_map.c \
-					src/0_parsing/1_parsing.c \
-					src/0_parsing/3_init_texture.c \
-					src/0_parsing/4_parse_wall.c \
-					src/1_input_handling/input.c \
-					src/2_engine_core/raycaster.c \
-					src/3_rendering/0_renderer.c \
-					src/3_rendering/1_3D.c \
-					src/3_rendering/1_3D_utils.c \
-					src/3_rendering/2_minimap.c \
-					src/4_game_loop/loop.c \
-					src/4_game_loop/mouse_handler.c \
+SRCS 			= 	src/parsing/check_map.c \
+					src/parsing/color_handling.c \
+					src/parsing/line_handling.c \
+					src/parsing/flood_fill.c \
+					src/parsing/flood_fill_utils.c \
+					src/parsing/char_checks.c \
+					src/parsing/get_info_map.c \
+					src/parsing/parsing.c \
+					src/parsing/init_texture.c \
+					src/parsing/parse_wall.c \
+					src/input/input.c \
+					src/engine/raycaster.c \
+					src/rendering/renderer.c \
+					src/rendering/render_3d.c \
+					src/rendering/render_3d_utils.c \
+					src/rendering/minimap.c \
+					src/game_loop/loop.c \
+					src/game_loop/mouse_handler.c \
 					src/error_handling.c \
 					src/main.c \
 
@@ -39,13 +39,9 @@ $(MLX_FOLDER):
 
 $(MLX): $(MLX_FOLDER)
 
-# Create obj directories
+# Create obj directory
 obj:
-	@mkdir -p obj/0_init
-	@mkdir -p obj/1_input_handling
-	@mkdir -p obj/2_engine_core
-	@mkdir -p obj/3_rendering
-	@mkdir -p obj/4_game_loop
+	@mkdir -p obj
 
 $(NAME) : $(OBJS) $(MLX) $(GNL) $(LIBFT)
 	@${CC} ${OBJS} $(LIBFT) ${MLX} ${GNL} ${LFLAGS} -o $(NAME) 

@@ -11,7 +11,7 @@
 /* ************************************************************************** */
 
 #include "cube3d.h"
-#include "cube_3d_parsing.h"
+#include "cube3d_parsing.h"
 
 void	exit_cross(t_data *data)
 {

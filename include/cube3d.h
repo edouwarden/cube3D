@@ -19,7 +19,6 @@
 # include <time.h>
 # include <unistd.h>
 # include "../mlx/mlx.h"
-# include "../mlx/mlx_int.h"
 
 # define TILE_SIZE 16
 # define PLAYER_SIZE 4
@@ -139,7 +138,7 @@ int					handle_key_release(int keycode, t_data *data);
 void				read_map(t_data *data, char *filename);
 void				init_player(t_data *data);
 void				parse_walls(t_data *data);
-void				my_mlx_pixel_put(t_data *data, int x, int y, int color);
+void				put_pixel(t_data *data, int x, int y, int color);
 void				draw_map(t_data *data);
 int					handle_loop(t_data *data);
 t_ray				find_nearest_wall_hit(t_data *data, float view_angle,
@@ -147,7 +146,7 @@ t_ray				find_nearest_wall_hit(t_data *data, float view_angle,
 void				init_all_textures(t_data *data);
 void				render_3d_view(t_data *data);
 void				draw_minimap(t_data *data);
-void				my_mlx_pixel_put(t_data *data, int x, int y, int color);
+void				put_pixel(t_data *data, int x, int y, int color);
 void				clean_exit(t_data *data, int texture_to_free);
 void				exit_cross(t_data *data);
 void				erase_textures(t_data *data, int nb);

@@ -26,7 +26,7 @@
 
 char	*get_next_line(int fd);
 char	*ft_strchr(const char *s, int c);
-size_t	ftt_strlen(const char *s);
+size_t	gnl_strlen(const char *s);
 char	*get_new_line(char *s);
 char	*new_string(char *s);
 char	*process_buffer(char *s, char *buff, ssize_t bytes);

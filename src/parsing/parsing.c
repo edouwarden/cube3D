@@ -10,10 +10,10 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "cube_3d_parsing.h"
+#include "cube3d_parsing.h"
 #include "libft.h"
 
-int	extract_bis(char name[2], char *str, t_data *data, int line)
+int	extract_secondary(char name[2], char *str, t_data *data, int line)
 {
 	if (name[0] == 'E' && name[1] == 'A')
 	{
@@ -63,7 +63,7 @@ int	extract(char name[2], char *str, t_data *data, int line)
 		return (1);
 	}
 	else
-		return (extract_bis(name, str, data, line));
+		return (extract_secondary(name, str, data, line));
 }
 
 int	extract_textures(char **file, t_data *data)
@@ -99,7 +99,7 @@ void	extract_map(char **file, t_data *data, int index)
 	int		size[2];
 	char	**map_trash;
 
-	get_max_lenght(file, index, data, size);
+	get_max_length(file, index, data, size);
 	if (data->player.x == -1)
 		parse_error(8, 0, NULL);
 	data->player.y = data->player.y - index;
@@ -110,7 +110,7 @@ void	extract_map(char **file, t_data *data, int index)
 	flood_fill(0, size[1] - index, data, map_trash);
 }
 
-void	supa_parse(char **file, t_data *data)
+void	parse_map(char **file, t_data *data)
 {
 	int	index;
 

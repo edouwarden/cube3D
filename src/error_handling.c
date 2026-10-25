@@ -10,7 +10,7 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "cube_3d_parsing.h"
+#include "cube3d_parsing.h"
 
 void	parse_error(int code, int line, char *str)
 {

@@ -10,7 +10,7 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "cube_3d_parsing.h"
+#include "cube3d_parsing.h"
 #include "libft.h"
 
 char	*get_textures(char *str, int line)
@@ -20,11 +20,11 @@ char	*get_textures(char *str, int line)
 	path = NULL;
 	path = ft_strdup(str + 2);
 	path = ft_strtrim(path, " 	\n");
-	try_file(path, line);
+	validate_texture_path(path, line);
 	return (path);
 }
 
-void	try_file(char *path, int line)
+void	validate_texture_path(char *path, int line)
 {
 	int	fd;
 

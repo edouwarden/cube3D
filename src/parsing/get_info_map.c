@@ -10,7 +10,7 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "cube_3d_parsing.h"
+#include "cube3d_parsing.h"
 
 int	get_y(char **map)
 {

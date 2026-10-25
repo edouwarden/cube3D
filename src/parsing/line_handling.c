@@ -10,7 +10,7 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "cube_3d_parsing.h"
+#include "cube3d_parsing.h"
 #include "libft.h"
 
 int	next_important_line(char **file, int start)
@@ -28,7 +28,7 @@ int	next_important_line(char **file, int start)
 	return (i);
 }
 
-int	get_len_legal(char *str, t_data *data, int line)
+int	get_valid_line_length(char *str, t_data *data, int line)
 {
 	int	i;
 
@@ -52,7 +52,7 @@ int	get_len_legal(char *str, t_data *data, int line)
 	return (i);
 }
 
-void	get_max_lenght(char **file, int index, t_data *data, int size[2])
+void	get_max_length(char **file, int index, t_data *data, int size[2])
 {
 	int	i;
 	int	max;
@@ -63,7 +63,7 @@ void	get_max_lenght(char **file, int index, t_data *data, int size[2])
 	i++;
 	while (file[i])
 	{
-		tmp = get_len_legal(file[i], data, i);
+		tmp = get_valid_line_length(file[i], data, i);
 		if (tmp > max)
 			max = tmp;
 		i++;

@@ -12,7 +12,7 @@
 
 #include "get_next_line.h"
 
-size_t	ftt_strlen(const char *s)
+size_t	gnl_strlen(const char *s)
 {
 	size_t	i;
 
@@ -35,7 +35,7 @@ char	*ft_strchr(const char *s, int c)
 	return (NULL);
 }
 
-char	*ftt_strjoin(char *s, char *buff)
+char	*gnl_strjoin(char *s, char *buff)
 {
 	char	*arr;
 	int		i;
@@ -43,7 +43,7 @@ char	*ftt_strjoin(char *s, char *buff)
 
 	if (!s || !buff)
 		return (NULL);
-	arr = (char *)ft_gc_malloc((ftt_strlen(s) + ftt_strlen(buff) + 1)
+	arr = (char *)ft_gc_malloc((gnl_strlen(s) + gnl_strlen(buff) + 1)
 			* sizeof(char));
 	if (!arr)
 		return (NULL);
@@ -70,6 +70,6 @@ char	*process_buffer(char *s, char *buff, ssize_t bytes)
 	}
 	buff[bytes] = '\0';
 	if (bytes > 0)
-		s = ftt_strjoin(s, buff);
+		s = gnl_strjoin(s, buff);
 	return (s);
 }

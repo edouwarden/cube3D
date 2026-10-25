@@ -11,7 +11,7 @@
 /* ************************************************************************** */
 
 #include "cube3d.h"
-#include "cube_3d_parsing.h"
+#include "cube3d_parsing.h"
 #include "libft.h"
 
 void	init_player(t_data *data)
@@ -76,7 +76,7 @@ int	main(int c, char **v)
 	ft_bzero(&data, sizeof(t_data));
 	(void)c;
 	define_keys(&data);
-	map_check(v[1], &data);
+	load_and_parse_map(v[1], &data);
 	if (!data.map[0])
 		return (printf("Invalid map file\n"));
 	data.mlx = mlx_init();

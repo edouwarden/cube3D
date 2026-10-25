@@ -29,9 +29,9 @@ void	draw_minimap_background(t_data *data)
 		{
 			if (x < MINIMAP_PADDING || x >= minimap_width - MINIMAP_PADDING
 				|| y < MINIMAP_PADDING || y >= minimap_height - MINIMAP_PADDING)
-				my_mlx_pixel_put(data, x, y, MINIMAP_BORDER_COLOR);
+				put_pixel(data, x, y, MINIMAP_BORDER_COLOR);
 			else
-				my_mlx_pixel_put(data, x, y, EMPTY_COLOR);
+				put_pixel(data, x, y, EMPTY_COLOR);
 			x++;
 		}
 		y++;
@@ -49,7 +49,7 @@ void	draw_minimap_tile(t_data *data, int x, int y, int color)
 		j = 0;
 		while (j < TILE_SIZE)
 		{
-			my_mlx_pixel_put(data, x * TILE_SIZE + i + MINIMAP_PADDING, y
+			put_pixel(data, x * TILE_SIZE + i + MINIMAP_PADDING, y
 				* TILE_SIZE + j + MINIMAP_PADDING, color);
 			j++;
 		}
@@ -91,7 +91,7 @@ void	draw_minimap_player(t_data *data, int px, int py)
 		j = -PLAYER_SIZE / 2;
 		while (j < PLAYER_SIZE / 2)
 		{
-			my_mlx_pixel_put(data, px + i, py + j, PLAYER_COLOR);
+			put_pixel(data, px + i, py + j, PLAYER_COLOR);
 			j++;
 		}
 		i++;

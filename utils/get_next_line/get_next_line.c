@@ -53,7 +53,7 @@ char	*new_string(char *str)
 		ft_gc_free(str);
 		return (NULL);
 	}
-	new_str = (char *)ft_gc_malloc((ftt_strlen(str) - i + 1) * sizeof(char));
+	new_str = (char *)ft_gc_malloc((gnl_strlen(str) - i + 1) * sizeof(char));
 	if (!new_str)
 		return (NULL);
 	i++;

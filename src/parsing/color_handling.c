@@ -10,10 +10,10 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "cube_3d_parsing.h"
+#include "cube3d_parsing.h"
 #include "libft.h"
 
-void	color_attribution(t_data *data, int stock[3], char c)
+void	assign_color(t_data *data, int stock[3], char c)
 {
 	if (c == 'F')
 	{
@@ -31,7 +31,7 @@ void	color_attribution(t_data *data, int stock[3], char c)
 		parse_error(6, 0, NULL);
 }
 
-void	try_colors(char **colors, int line, char *str, t_data *data)
+void	parse_rgb_colors(char **colors, int line, char *str, t_data *data)
 {
 	int	nb;
 	int	i;
@@ -52,7 +52,7 @@ void	try_colors(char **colors, int line, char *str, t_data *data)
 			parse_error(4, line, colors[i]);
 		i++;
 	}
-	color_attribution(data, stock, str[0]);
+	assign_color(data, stock, str[0]);
 }
 
 void	get_color(char *str, t_data *data, int line)
@@ -64,5 +64,5 @@ void	get_color(char *str, t_data *data, int line)
 	color = ft_strdup(str + 2);
 	color = ft_strtrim(color, " 	\n");
 	colors = ft_split(color, ',');
-	try_colors(colors, line, str, data);
+	parse_rgb_colors(colors, line, str, data);
 }

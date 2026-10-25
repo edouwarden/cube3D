@@ -10,7 +10,7 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "cube_3d_parsing.h"
+#include "cube3d_parsing.h"
 #include "libft.h"
 
 int	is_only_digit(char *str)
@@ -27,7 +27,7 @@ int	is_only_digit(char *str)
 	return (1);
 }
 
-int	is_through(char c)
+int	is_walkable_tile(char c)
 {
 	int	i;
 

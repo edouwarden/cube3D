@@ -10,10 +10,10 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "cube_3d_parsing.h"
+#include "cube3d_parsing.h"
 #include "libft.h"
 
-int	update_fill(int last_pos[2], char **file, int lim[2])
+int	flood_fill_step(int last_pos[2], char **file, int lim[2])
 {
 	int	mv;
 	int	ij[2];
@@ -27,7 +27,7 @@ int	update_fill(int last_pos[2], char **file, int lim[2])
 		{
 			if (is_player(file[ij[0]][ij[1]]))
 			{
-				check(ij[0], ij[1], lim, file);
+				check_borders(ij[0], ij[1], lim, file);
 				check_up(ij, file, &mv, last_pos);
 				check_left(ij, file, &mv, last_pos);
 				check_right(ij, file, &mv, last_pos);
@@ -65,8 +65,8 @@ void	flood_fill(int lim_h, int lim_b, t_data *data, char **file)
 	lim[1] = lim_b;
 	last_pos[0] = data->player.x;
 	last_pos[1] = data->player.y - 1;
-	moving = update_fill(last_pos, file, lim);
+	moving = flood_fill_step(last_pos, file, lim);
 	while (moving)
-		moving = update_fill(last_pos, file, lim);
+		moving = flood_fill_step(last_pos, file, lim);
 	check_map_boundary(file);
 }

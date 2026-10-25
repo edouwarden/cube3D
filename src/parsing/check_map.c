@@ -10,7 +10,7 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "cube_3d_parsing.h"
+#include "cube3d_parsing.h"
 #include "libft.h"
 
 void	check_path_name(char *p)
@@ -50,7 +50,7 @@ void	erase_map(char **map, int abort, int fd, int all)
 	}
 }
 
-char	**file_add(char *line, char **prev_map, int len)
+char	**append_map_line(char *line, char **prev_map, int len)
 {
 	char	**new_map;
 	int		i;
@@ -84,19 +84,19 @@ char	**check_file(char *path)
 	while (line)
 	{
 		line = get_next_line(fd);
-		file = file_add(line, file, len_map);
+		file = append_map_line(line, file, len_map);
 		len_map++;
 	}
 	close(fd);
 	return (file);
 }
 
-void	map_check(char *path, t_data *data)
+void	load_and_parse_map(char *path, t_data *data)
 {
 	char	**file;
 
 	check_path_name(path);
 	file = check_file(path);
-	supa_parse(file, data);
+	parse_map(file, data);
 	parse_walls(data);
 }

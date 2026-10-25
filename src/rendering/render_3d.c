@@ -12,7 +12,7 @@
 
 #include "cube3d.h"
 
-unsigned int	my_mlx_pixel_get_col(t_data *data, int x, int y, int nb)
+unsigned int	get_pixel_color(t_data *data, int x, int y, int nb)
 {
 	void			*dst;
 	unsigned int	color;
@@ -42,16 +42,16 @@ void	draw_sky_floor(t_data *data)
 		while (x < WINDOW_WIDTH)
 		{
 			if (y < WINDOW_HEIGHT / 2)
-				my_mlx_pixel_put(data, x, y, ceiling_color);
+				put_pixel(data, x, y, ceiling_color);
 			else
-				my_mlx_pixel_put(data, x, y, floor_color);
+				put_pixel(data, x, y, floor_color);
 			x++;
 		}
 		y++;
 	}
 }
 
-void	draw_collums(t_render_vars *vars, t_data *data)
+void	draw_columns(t_render_vars *vars, t_data *data)
 {
 	vars->y = vars->wall_top;
 	while (vars->y < vars->wall_bottom)
@@ -63,14 +63,14 @@ void	draw_collums(t_render_vars *vars, t_data *data)
 		}
 		vars->texture_y = ((vars->y * IMAGE_Y_SIZE) / vars->wall_height)
 			+ vars->texture_ratio;
-		vars->color = my_mlx_pixel_get_col(data, vars->texture_x,
+		vars->color = get_pixel_color(data, vars->texture_x,
 				vars->texture_y, vars->wall_dir);
 		if (vars->color == (unsigned int)-1)
 		{
 			vars->y++;
 			continue ;
 		}
-		my_mlx_pixel_put(data, vars->x, vars->y, vars->color);
+		put_pixel(data, vars->x, vars->y, vars->color);
 		vars->y++;
 	}
 }
@@ -101,7 +101,7 @@ void	send_ray(t_render_vars *vars, t_data *data)
 	if ((vars->hit_wall.nx > 0 && vars->ray.wall_x > 0)
 		|| (vars->hit_wall.ny < 0 && vars->ray.wall_y > 0))
 		vars->texture_x = IMAGE_X_SIZE - vars->texture_x - 1;
-	draw_collums(vars, data);
+	draw_columns(vars, data);
 }
 
 void	render_3d_view(t_data *data)
@@ -179,13 +179,13 @@ void	render_3d_view(t_data *data)
 				continue ;
 			}
 			texture_y = ((y * IMAGE_Y_SIZE) / wall_height) + texture_ratio;
-			color = my_mlx_pixel_get_col(data, texture_x, texture_y, wall_dir);
+			color = get_pixel_color(data, texture_x, texture_y, wall_dir);
 			if (color == (unsigned int)-1)
 			{
 				y++;
 				continue ;
 			}
-			my_mlx_pixel_put(data, x, y, color);
+			put_pixel(data, x, y, color);
 			y++;
 		}
 		x++;
