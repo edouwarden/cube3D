@@ -1,7 +1,7 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   fraud_fill.c                                       :+:      :+:    :+:   */
+/*   flood_fill.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: jsarter <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
@@ -41,7 +41,7 @@ int	update_fill(int last_pos[2], char **file, int lim[2])
 	return (mv);
 }
 
-void	i_gave_up(char **map)
+void	check_map_boundary(char **map)
 {
 	int	i;
 
@@ -55,7 +55,7 @@ void	i_gave_up(char **map)
 	}
 }
 
-void	fraud_fill(int lim_h, int lim_b, t_data *data, char **file)
+void	flood_fill(int lim_h, int lim_b, t_data *data, char **file)
 {
 	int	last_pos[2];
 	int	lim[2];
@@ -68,5 +68,5 @@ void	fraud_fill(int lim_h, int lim_b, t_data *data, char **file)
 	moving = update_fill(last_pos, file, lim);
 	while (moving)
 		moving = update_fill(last_pos, file, lim);
-	i_gave_up(file);
+	check_map_boundary(file);
 }

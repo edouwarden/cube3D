@@ -65,7 +65,7 @@ void	check_right(int ij[2], char **file, int *mv, int last_pos[2]);
 void	get_max_lenght(char **file, int index, t_data *data, int size[2]);
 int		get_len_legal(char *str, t_data *data, int line);
 int		next_important_line(char **file, int start);
-void	fraud_fill(int lim_h, int lim_b, t_data *data, char **file);
+void	flood_fill(int lim_h, int lim_b, t_data *data, char **file);
 
 int		sn(char *buffer, int size);
 int		ft_cpl(char *dest, int j);

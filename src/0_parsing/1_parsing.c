@@ -107,7 +107,7 @@ void	extract_map(char **file, t_data *data, int index)
 	data->map_height = size[1] - index;
 	data->map_width = size[0];
 	map_trash = clone_map(file, index + 1, size[0] + 1, size[1] - (index));
-	fraud_fill(0, size[1] - index, data, map_trash);
+	flood_fill(0, size[1] - index, data, map_trash);
 }
 
 void	supa_parse(char **file, t_data *data)

@@ -7,8 +7,8 @@ CC 				= 	cc
 SRCS 			= 	src/0_parsing/0_check_map.c \
 					src/0_parsing/color_handling.c \
 					src/0_parsing/line_handling.c \
-					src/0_parsing/fraud_fill.c \
-					src/0_parsing/fraud_fill_utils.c \
+					src/0_parsing/flood_fill.c \
+					src/0_parsing/flood_fill_utils.c \
 					src/0_parsing/is_something.c \
 					src/0_parsing/2_get_info_map.c \
 					src/0_parsing/1_parsing.c \

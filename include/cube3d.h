@@ -41,7 +41,7 @@
 # define LIGHT_INTENSITY 5.0
 # define LIGHT_FALLOFF 0.1
 
-# define PATH_TO_TEXTURE "truc.xpm"
+# define PATH_TO_TEXTURE "textures/default.xpm"
 # define IMAGE_X_SIZE 900
 # define IMAGE_Y_SIZE 900
 # define NB_TEXTURES 4
