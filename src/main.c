@@ -74,6 +74,7 @@ int	main(int c, char **v)
 	t_data	data;
 
 	ft_bzero(&data, sizeof(t_data));
+	data.show_minimap = 1;
 	(void)c;
 	define_keys(&data);
 	load_and_parse_map(v[1], &data);

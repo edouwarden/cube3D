@@ -53,12 +53,14 @@ void	handle_movement(t_data *data, int *redraw, float move_x, float move_y)
 	}
 	else
 	{
-		if (fabs(move_x) > 0.001 && is_position_walkable(data, new_x, data->player.y))
+		if (fabs(move_x) > 0.001
+			&& is_position_walkable(data, new_x, data->player.y))
 		{
 			data->player.x += move_x;
 			*redraw = 1;
 		}
-		if (fabs(move_y) > 0.001 && is_position_walkable(data, data->player.x, new_y))
+		if (fabs(move_y) > 0.001
+			&& is_position_walkable(data, data->player.x, new_y))
 		{
 			data->player.y += move_y;
 			*redraw = 1;

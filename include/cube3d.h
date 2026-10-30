@@ -21,18 +21,28 @@
 # include "../mlx/mlx.h"
 
 # define TILE_SIZE 16
-# define PLAYER_SIZE 4
-# define WALL_COLOR 0x333333
+# define PLAYER_SIZE 6
+# define WALL_COLOR 0x555555
 # define EMPTY_COLOR 0x111111
 # define PLAYER_COLOR 0xFF0000
+# define PLAYER_DIR_COLOR 0xFFB000
 # define MOVE_SPEED 0.05
-# define ROT_SPEED 0.05
+# ifndef ROT_SPEED
+#  define ROT_SPEED 0.05
+# endif
 # define COLLISION_MARGIN 0.2
 # define FRAME_DELAY 16000
 # define MINIMAP_PADDING 2
 # define MINIMAP_BORDER_COLOR 0x666666
-# define WINDOW_WIDTH 2540
-# define WINDOW_HEIGHT 1440
+# define RAY_COLOR 0x00E5FF
+# define RAY_HIT_COLOR 0xFFFF00
+# define RAY_DEBUG_STEP 16
+# ifndef WINDOW_WIDTH
+#  define WINDOW_WIDTH 2540
+# endif
+# ifndef WINDOW_HEIGHT
+#  define WINDOW_HEIGHT 1440
+# endif
 # define FOV 60.0
 # define NUM_RAYS 640
 # define WALL_HEIGHT 2.0
@@ -107,7 +117,11 @@ typedef struct s_data
 	int				endian_bis[NB_TEXTURES];
 
 	int				texture_line_length[NB_TEXTURES];
+	int				texture_width[NB_TEXTURES];
+	int				texture_height[NB_TEXTURES];
 	int				keys[65536];
+	int				show_rays;
+	int				show_minimap;
 }					t_data;
 
 typedef struct s_render_vars
@@ -146,6 +160,7 @@ t_ray				find_nearest_wall_hit(t_data *data, float view_angle,
 void				init_all_textures(t_data *data);
 void				render_3d_view(t_data *data);
 void				draw_minimap(t_data *data);
+void				draw_minimap_rays(t_data *data);
 void				put_pixel(t_data *data, int x, int y, int color);
 void				clean_exit(t_data *data, int texture_to_free);
 void				exit_cross(t_data *data);

@@ -18,7 +18,8 @@ unsigned int	get_pixel_color(t_data *data, int x, int y, int nb)
 	unsigned int	color;
 
 	if (!data || !data->address[nb] || nb >= NB_TEXTURES || x < 0
-		|| x >= IMAGE_X_SIZE || y < 0 || y >= IMAGE_Y_SIZE)
+		|| x >= data->texture_width[nb] || y < 0
+		|| y >= data->texture_height[nb])
 		return ((unsigned int)-1);
 	dst = data->address[nb] + (y * data->texture_line_length[nb] + x
 			* (data->bits_per_pixel / 8));
@@ -61,8 +62,8 @@ void	draw_columns(t_render_vars *vars, t_data *data)
 			vars->y++;
 			continue ;
 		}
-		vars->texture_y = ((vars->y * IMAGE_Y_SIZE) / vars->wall_height)
-			+ vars->texture_ratio;
+		vars->texture_y = ((vars->y * data->texture_height[vars->wall_dir])
+				/ vars->wall_height) + vars->texture_ratio;
 		vars->color = get_pixel_color(data, vars->texture_x,
 				vars->texture_y, vars->wall_dir);
 		if (vars->color == (unsigned int)-1)
@@ -77,6 +78,9 @@ void	draw_columns(t_render_vars *vars, t_data *data)
 
 void	send_ray(t_render_vars *vars, t_data *data)
 {
+	int	tex_w;
+	int	tex_h;
+
 	vars->ray_angle = vars->start_angle + vars->x * vars->angle_step;
 	vars->ray = find_nearest_wall_hit(data, vars->ray_angle, &vars->hit_wall);
 	if (vars->ray.distance == INFINITY)
@@ -94,13 +98,15 @@ void	send_ray(t_render_vars *vars, t_data *data)
 	if (vars->wall_bottom > WINDOW_HEIGHT)
 		vars->wall_bottom = WINDOW_HEIGHT;
 	vars->wall_dir = get_wall_orientation(data, vars->hit_wall);
+	tex_w = data->texture_width[vars->wall_dir];
+	tex_h = data->texture_height[vars->wall_dir];
 	vars->texture_ratio = (128 * (vars->wall_height - WINDOW_HEIGHT)
-			* IMAGE_Y_SIZE) / (vars->wall_height * 256);
+			* tex_h) / (vars->wall_height * 256);
 	vars->hit_pos = get_relative_position(vars->ray, data, vars->hit_wall);
-	vars->texture_x = (int)(vars->hit_pos * IMAGE_X_SIZE) % IMAGE_X_SIZE;
+	vars->texture_x = (int)(vars->hit_pos * tex_w) % tex_w;
 	if ((vars->hit_wall.nx > 0 && vars->ray.wall_x > 0)
 		|| (vars->hit_wall.ny < 0 && vars->ray.wall_y > 0))
-		vars->texture_x = IMAGE_X_SIZE - vars->texture_x - 1;
+		vars->texture_x = tex_w - vars->texture_x - 1;
 	draw_columns(vars, data);
 }
 
